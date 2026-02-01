@@ -1,0 +1,240 @@
+/* ======================== RESET & BASE ======================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  color: #e2e8f0;
+}
+
+.container { max-width: 680px; margin: 0 auto; padding: 24px 16px; }
+
+/* ======================== HEADER ======================== */
+.header { text-align: center; margin-bottom: 32px; }
+.header h1 {
+  font-size: 28px; font-weight: 800;
+  background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.header p { color: #94a3b8; font-size: 14px; margin-top: 4px; }
+
+/* ======================== CARDS ======================== */
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(8px);
+}
+.card h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+
+/* ======================== BUTTON GRID ======================== */
+.btn-grid { display: grid; gap: 8px; }
+.btn-grid-2 { grid-template-columns: 1fr 1fr; }
+.btn-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* ======================== BUTTONS ======================== */
+.btn {
+  padding: 12px; border-radius: 12px; border: 2px solid #475569;
+  background: transparent; color: #e2e8f0; cursor: pointer;
+  font-size: 14px; text-align: left; transition: all 0.2s;
+}
+.btn:hover { border-color: #64748b; }
+.btn.active-indigo { border-color: #6366f1; background: rgba(99, 102, 241, 0.15); }
+.btn.active-purple { border-color: #a855f7; background: rgba(168, 85, 247, 0.15); }
+.btn.active-yellow { border-color: #eab308; background: rgba(234, 179, 8, 0.15); }
+
+.btn-primary {
+  width: 100%; padding: 16px; border-radius: 12px; border: none;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+  color: white; font-size: 18px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+.btn-submit {
+  width: 100%; padding: 16px; border-radius: 12px; border: none;
+  background: linear-gradient(90deg, #22c55e, #10b981);
+  color: white; font-size: 18px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-submit:hover { opacity: 0.9; }
+.btn-submit:disabled { background: #334155; color: #64748b; cursor: not-allowed; }
+
+.btn-secondary {
+  width: 100%; padding: 14px; border-radius: 12px; border: none;
+  background: #334155; color: #e2e8f0; font-size: 16px;
+  font-weight: 600; cursor: pointer; transition: background 0.2s;
+}
+.btn-secondary:hover { background: #475569; }
+
+.btn-followup {
+  width: 100%; padding: 12px; border-radius: 10px; border: none;
+  background: rgba(51, 65, 85, 0.5); color: #cbd5e1; font-size: 14px;
+  text-align: left; cursor: pointer; margin-top: 8px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.2s;
+}
+.btn-followup:hover { background: rgba(51, 65, 85, 0.8); }
+
+/* ======================== TIMER ======================== */
+.timer { font-family: 'Courier New', monospace; font-size: 36px; font-weight: 700; }
+.timer.red { color: #f87171; animation: blink 1s infinite; }
+.timer.green { color: #4ade80; }
+.timer-hint { color: #64748b; font-size: 13px; margin-left: 8px; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ======================== QUESTION ======================== */
+.question-label {
+  font-size: 11px; color: #94a3b8;
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+}
+.question-text { font-size: 20px; line-height: 1.5; }
+
+/* ======================== MICROPHONE ======================== */
+.mic-area { display: flex; flex-direction: column; align-items: center; padding: 24px 0; }
+
+.mic-btn {
+  width: 80px; height: 80px; border-radius: 50%; border: none;
+  cursor: pointer; display: flex; align-items: center;
+  justify-content: center; transition: all 0.2s;
+}
+.mic-btn.idle {
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+}
+.mic-btn.idle:hover { transform: scale(1.05); }
+.mic-btn.recording {
+  background: #ef4444;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.5);
+  animation: pulse 1.5s infinite;
+}
+.mic-btn svg { width: 36px; height: 36px; fill: none; stroke: white; stroke-width: 2; }
+
+.mic-label { margin-top: 12px; font-size: 14px; }
+.mic-label.recording { color: #f87171; }
+.mic-label.idle { color: #94a3b8; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5); }
+  50% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+}
+
+/* ======================== TEXTAREA ======================== */
+.response-area textarea {
+  width: 100%; min-height: 180px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid #334155; border-radius: 12px; padding: 16px;
+  color: #e2e8f0; font-size: 16px; line-height: 1.6;
+  resize: vertical; font-family: inherit; outline: none;
+}
+.response-area textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+.response-area textarea::placeholder { color: #475569; }
+
+/* ======================== ERROR ======================== */
+.error-box {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px; padding: 12px 16px;
+  color: #fca5a5; font-size: 14px; margin-bottom: 16px;
+}
+
+/* ======================== SCORE CIRCLE ======================== */
+.score-circle {
+  width: 72px; height: 72px; border-radius: 50%; border: 4px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700; flex-shrink: 0;
+}
+.score-green  { border-color: #22c55e; color: #4ade80; }
+.score-yellow { border-color: #eab308; color: #facc15; }
+.score-orange { border-color: #f97316; color: #fb923c; }
+.score-red    { border-color: #ef4444; color: #f87171; }
+
+/* ======================== SCORE BARS ======================== */
+.score-bar-track {
+  height: 8px; background: #1e293b;
+  border-radius: 999px; overflow: hidden; margin: 4px 0;
+}
+.score-bar-fill {
+  height: 100%; border-radius: 999px;
+  transition: width 0.8s ease-out;
+}
+.bar-green  { background: #22c55e; }
+.bar-yellow { background: #eab308; }
+.bar-orange { background: #f97316; }
+.bar-red    { background: #ef4444; }
+
+/* ======================== FEEDBACK SECTIONS ======================== */
+.strength-box {
+  background: rgba(22, 101, 52, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 16px; padding: 20px; margin-bottom: 16px;
+}
+.strength-box h3 { color: #4ade80; font-size: 16px; margin-bottom: 8px; }
+
+.improve-box {
+  background: rgba(124, 45, 18, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 16px; padding: 20px; margin-bottom: 16px;
+}
+.improve-box h3 { color: #fb923c; font-size: 16px; margin-bottom: 8px; }
+
+.gold-box {
+  background: rgba(49, 46, 129, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 16px; padding: 20px; margin-bottom: 16px;
+}
+.gold-box h3 { color: #818cf8; font-size: 16px; margin-bottom: 8px; }
+
+.feedback-list { list-style: none; }
+.feedback-list li {
+  font-size: 14px; color: #cbd5e1; padding: 4px 0;
+  display: flex; gap: 8px;
+}
+.feedback-list li::before { content: '•'; flex-shrink: 0; }
+
+.gold-text { font-size: 14px; color: #cbd5e1; white-space: pre-wrap; line-height: 1.7; }
+
+/* ======================== SPINNER ======================== */
+.spinner { text-align: center; padding: 80px 0; }
+.spinner-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  animation: spin 2s linear infinite;
+}
+.spinner-icon svg { width: 32px; height: 32px; stroke: white; fill: none; stroke-width: 2; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ======================== UTILITIES ======================== */
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-center  { display: flex; align-items: center; }
+.gap-2   { gap: 8px; }
+.gap-3   { gap: 12px; }
+.mb-2    { margin-bottom: 8px; }
+.mb-4    { margin-bottom: 16px; }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 12px; }
+.text-muted  { color: #94a3b8; }
+.text-center { text-align: center; }
+.font-bold   { font-weight: 700; }
+
+.followup-tag {
+  display: inline-block; padding: 4px 12px;
+  border-radius: 999px; background: rgba(168, 85, 247, 0.2);
+  color: #c084fc; font-size: 13px;
+}
