@@ -641,11 +641,38 @@ function submitAnswer() {
   if (!S.transcript.trim()) { S.error = 'Please provide a response first.'; render(); return; }
   stopRecording(); stopTimer();
   S.stage = 'grading'; render();
-  setTimeout(() => {
-    const questionToGrade = S.followUp || S.prompt;
-    S.feedback = gradeLocally(S.role, S.type, S.transcript, questionToGrade);
-    S.stage = 'feedback'; render();
-  }, 1500);
+  
+  const questionToGrade = S.followUp || S.prompt;
+  const startTime = Date.now();
+  
+  // Use API service (falls back to local if backend unavailable)
+  ApiService.gradeResponse(S.role, S.type, S.transcript, questionToGrade)
+    .then(feedback => {
+      S.feedback = feedback;
+      S.stage = 'feedback';
+      render();
+      
+      // Optionally save session to backend
+      if (CONFIG.features.enableHistory) {
+        const sessionData = {
+          role: S.role,
+          type: S.type,
+          difficulty: S.diff,
+          question: questionToGrade,
+          transcript: S.transcript,
+          feedback: feedback,
+          timeSpent: Math.floor((Date.now() - startTime) / 1000),
+          timestamp: new Date().toISOString()
+        };
+        ApiService.saveSession(sessionData);
+      }
+    })
+    .catch(error => {
+      console.error('Grading error:', error);
+      S.error = 'Grading failed. Please try again.';
+      S.stage = 'interview';
+      render();
+    });
 }
 
 function doFollowUp(q) {
