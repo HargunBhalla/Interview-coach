@@ -224,7 +224,7 @@ function calculateAvg(sessionList) {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 rehears.io Backend running on port ${PORT}`);
+  console.log(`🚀 Rehears.io Backend running on port ${PORT}`);
   console.log(`📊 API endpoints:`);
   console.log(`   POST   /api/grade`);
   console.log(`   POST   /api/sessions`);
