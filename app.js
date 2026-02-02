@@ -745,7 +745,7 @@ function setupHTML() {
         ${['easy', 'medium', 'hard'].map(d => `
           <button class="btn ${S.diff === d ? 'active-yellow' : ''}" onclick="S.diff='${d}';render()" style="text-align:center">
             <div style="font-weight:600;text-transform:capitalize">${d}</div>
-            <div class="text-xs text-muted">${d === 'easy' ? '90s' : d === 'medium' ? '2 min' : '2.5 min'}</div>
+            <div class="text-xs text-muted">${d === 'easy' ? '1.5 minutes' : d === 'medium' ? '2 minutes' : '2.5 minutes'}</div>
           </button>
         `).join('')}
       </div>
