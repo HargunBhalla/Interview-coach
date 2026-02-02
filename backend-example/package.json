@@ -1,7 +1,7 @@
 {
   "name": "interview-coach-backend",
   "version": "1.0.0",
-  "description": "Backend API for Interview Coach with AI grading",
+  "description": "Backend API for rehears.io with AI grading",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

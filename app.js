@@ -1,5 +1,5 @@
 // ================================================================
-//  Interview Coach — Voice Interview Practice
+//  rehears.io — Voice Interview Practice
 //  app.js — All application logic
 // ================================================================
 
@@ -713,7 +713,7 @@ function setupHTML() {
   const typeKeys = Object.keys(PROMPTS[S.role]);
   return `
     <div class="header">
-      <h1>🎤 Interview Coach</h1>
+      <h1>🎤 rehears.io</h1>
       <p>Voice Interview Practice with AI Feedback</p>
     </div>
     <div class="card">

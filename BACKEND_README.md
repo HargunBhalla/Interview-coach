@@ -1,4 +1,4 @@
-# Interview Coach - Backend Server
+# rehears.io - Backend Server
 # A simple Express.js backend for AI-powered grading
 
 This backend adds:
